@@ -1,0 +1,40 @@
+<div class="side-menu" [ngClass]="{
+    'toggled-sm': toggled,
+    'toggled-no': !toggled
+  }">
+    <div class="logo-lg">
+        <img src="assets/images/logo.png" />
+        <span class="logo-txt">Utavi</span>
+    </div>
+
+    <div class="side-menu-wrapper">
+        <!-- Menu Starts Here-->
+        <ul class="menu-items">
+            <li class="menu-item" routerLinkActive="active-parent" *ngFor="let menu of menus"
+                [ngClass]="{ 'mm-active': menuActive === menu.id }">
+                <!-- #Only Parent Menu-->
+                <a class="menu-link" [routerLink]="menu.link" routerLinkActive="active" *ngIf="!menu.childMenu">
+                    <i class="material-icons">{{ menu.icon }}</i>
+                    <span class="menu-lable">{{ menu.label }}</span>
+                </a>
+
+                <!-- #Having Child Menu-->
+                <a class="menu-link has-arrow" (click)="onMenuClick(menu.id)" *ngIf="menu.childMenu">
+                    <i class="material-icons">{{ menu.icon }}</i>
+                    <span class="menu-lable">{{ menu.label }}</span>
+                </a>
+
+                <ul class="sub-menu" *ngIf="menu.childMenu">
+                    <li *ngFor="let child of menu.childMenu">
+                        <a [routerLink]="child.link" routerLinkActive="active">
+                            <i class="material-icons">{{ child.icon }}</i>
+                            <span>{{ child.label }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <i class="material-icons toogle-btn" (click)="onToggle()">menu</i>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.main-container {
+    display: flex;
+
+    .main-content {
+        width   : 100%;
+        overflow: hidden;
+        padding : 10px;
+        height  : 100vh;
+    }
+}
