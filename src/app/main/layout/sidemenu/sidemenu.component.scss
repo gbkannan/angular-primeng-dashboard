@@ -1,0 +1,230 @@
+.side-menu {
+    width       : 225px;
+    height      : 100%;
+    z-index     : 1001;
+    background  : aliceblue;
+    bottom      : 0;
+    margin-top  : 0;
+    position    : relative;
+    font-size: 14px;
+    top         : 0px;
+    border-right: 1px solid #e9e9ef;
+
+    .logo-lg {
+        height  : 50px;
+        display : flex;
+        position: relative;
+
+        img {
+            height : 100%;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+        }
+
+        .logo-txt {
+            font-weight   : 700;
+            font-size     : 18px;
+            vertical-align: middle;
+            margin        : auto 0px;
+        }
+
+        &:after {
+            content         : "";
+            position        : absolute;
+            bottom          : 0;
+            right           : 15px;
+            height          : 1px;
+            width           : calc(100% - 30px);
+            background-color: #d4ebff;
+        }
+    }
+
+    .side-menu-wrapper {
+        ul.menu-items {
+            margin      : 0;
+            padding-left: 0;
+            list-style  : none;
+
+            li.menu-item {
+                display: block;
+                width  : 100%;
+
+                a.menu-link {
+                    display           : block;
+                    padding           : 0.62rem 1.5rem;
+                    color             : #545a6d;
+                    position          : relative;
+                    font-size         : inherit;
+                    -webkit-transition: all .4s;
+                    transition        : all .4s;
+                    font-weight       : 500;
+                    text-decoration   : none !important;
+                    outline           : 0 !important;
+                    cursor            : pointer;
+
+                    &:hover {
+                        color: #5156be !important;
+                    }
+
+                    &.active {
+                        color: #5156be !important;
+                    }
+
+                    i {
+                        fill          : rgba(84, 90, 109, .2);
+                        margin-right  : 10px;
+                        font-size     : 16px;
+                        margin-bottom : 2px;
+                        vertical-align: bottom;
+                    }
+
+                    &.has-arrow:after {
+                        content           : "\e409";
+                        font-family       : "Material Icons";
+                        display           : block;
+                        float             : right;
+                        -webkit-transition: -webkit-transform .2s;
+                        transition        : -webkit-transform .2s;
+                        transition        : transform .2s;
+                        transition        : transform .2s, -webkit-transform .2s;
+                        font-size         : 1.1rem;
+                        margin-right      : -5px;
+                        margin-top        : 2px;
+                    }
+
+
+                }
+
+                &.active-parent {
+                    a.menu-link {
+                        color: #5156be !important;
+                    }
+                }
+
+                ul.sub-menu {
+                    padding   : 0;
+                    list-style: none;
+                    height    : 0px;
+                    display   : none;
+
+                    li {
+                        display: block;
+                        width  : 100%;
+
+                        a {
+                            padding           : 0.4rem 1.5rem 0.4rem 3.3rem;
+                            font-size         : 14px;
+                            color             : #545a6d;
+                            display           : block;
+                            position          : relative;
+                            -webkit-transition: all .4s;
+                            transition        : all .4s;
+                            text-decoration   : none !important;
+                            outline           : 0 !important;
+
+                            i {
+                                fill          : rgba(84, 90, 109, .2);
+                                margin-right  : 10px;
+                                font-size     : 16px;
+                                margin-bottom : 2px;
+                                vertical-align: bottom;
+                            }
+
+                            &:hover {
+                                color: #5156be !important;
+                            }
+
+                            &.active {
+                                color: #5156be !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .toogle-btn {
+            position: absolute;
+            bottom  : 0;
+            padding : 1rem 1.5rem;
+            width   : 100%;
+            cursor  : pointer;
+        }
+    }
+
+    &.toggled-no {
+        li.menu-item.mm-active {
+            .has-arrow:after {
+                -webkit-transform: rotate(90deg);
+                transform        : rotate(90deg);
+            }
+
+            ul.sub-menu {
+                display: block !important;
+                height : auto !important;
+            }
+        }
+
+        .toogle-btn {
+            text-align: left;
+        }
+    }
+
+    // !Toggled Sidemu Styling
+    &.toggled-sm {
+        width  : 70px !important;
+        z-index: 5;
+
+        .toogle-btn {
+            text-align: center;
+        }
+
+        .logo-txt {
+            display: none;
+        }
+
+        .menu-lable {
+            display: none;
+        }
+
+        .has-arrow:after {
+            display: none !important;
+        }
+
+        .menu-item {
+
+            &:hover {
+                .menu-link {
+
+                    width           : calc(190px + 70px);
+                    color           : #5156be;
+                    background-color: aliceblue;
+                }
+
+                .menu-lable {
+                    display     : inline;
+                    padding-left: 2.5rem;
+                }
+
+                ul.sub-menu {
+                    display           : block !important;
+                    height            : auto !important;
+                    left              : 70px;
+                    position          : absolute;
+                    width             : 190px;
+                    -webkit-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+                    box-shadow        : 0 0.5rem 1rem rgb(0 0 0 / 10%);
+
+                    a {
+                        -webkit-box-shadow: none;
+                        box-shadow        : none;
+                        padding           : 8px 20px !important;
+                        width             : 190px;
+                        z-index           : 6;
+                        color             : #545a6d;
+                    }
+                }
+            }
+
+        }
+    }
+}
